@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/sfondo6"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FAQ">
+
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:textSize="15dp"
+        android:background="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cosa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cosa_e" />
+
+    <TextView
+        android:id="@+id/cosa_risposta"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="@string/cosa_e_risposta"
+        android:layout_below="@id/cosa"/>
+
+    <TextView
+        android:textSize="15dp"
+        android:id="@+id/come"
+        android:background="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cosa_risposta"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/come_funziona" />
+
+    <TextView
+        android:id="@+id/come_risposta"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:background="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/come"
+        android:text="@string/come_funziona_risposta" />
+
+</RelativeLayout>

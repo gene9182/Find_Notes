@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Find notes!</string>
+    <string name="button_main">Seleziona immagine</string>
+    <string name="button_camera">Scatta una foto</string>
+    <string name="faq">FAQ</string>
+    <string name="credits">Crediti</string>
+    <string name="settings">Impostazioni</string>
+    <string name="request">Per eventuali richieste inviare una e-mail al seguente indirizzo:</string>
+    <string name="email">genericogarofano@gmail.com</string>
+    <string name="creator">App realizzata da Generico Garofano</string>
+    <string name="relatore">Relatore: Gerardo Canfora</string>
+    <string name="project">Questa applicazione riguarda un progetto di tesi in Ingegneria informatica presso Università Degli Studi
+     Del Sannio.</string>
+    <string name="cosa_e">Cosa è questa applicazione?</string>
+    <string name="cosa_e_risposta">Find Notes è una applicazione in grado di riconoscere le tipologie di note e di chiavi musicali
+    da una immagine di uno spartito, usando una accuratezza superiore al 55%!</string>
+    <string name="come_funziona">Come si utilizza?</string>
+    <string name="come_funziona_risposta">Si utilizza in modo molto semplice, nella schermata iniziale puoi scegliere se prelevare
+    una immagine esistente dalla galleria oppure fare scattare una nuova foto! Ricorda, il processo potrebbe richiedere anche qualche minuto.</string>
+    <string name="elabora">Elabora!</string>
+    <string name="home">Pagina iniziale</string>
+    <string name="music">Da qui puoi decidere se attivare o disattivare la musica.</string>
+    <string name="elaborazione">Il processo potrebbe richiedere qualche minuto, dipende dal device.</string>
+    <string name="fatto">Processo terminato.</string>
+    <string name="benvenuto">BENVENUTO</string>
+    <string name="scarica">Scarica!</string>
+    <string name="scaricato">Immagine salvata correttamente in galleria.</string>
+    <string name="non_scaricato">Errore durante il salvataggio del file, riprovare.</string>
+    <string name="no_match">Nessun matching</string>
+    <string name="permission_explain">Ciao! Abbiamo bisogno di accedere alla memoria del dispositivo per salvare immagini e leggere immagini dalla galleriae abbiamo bisogno della fotocamera per scattare foto!</string>
+    <string name="enable_permission">Autorizza</string>
+    <string name="title_alert">Richiesta autorizzazione</string>
+    <string name="permission">Senza i permessi attivi, l\'app non funzionerà correttamente.</string>
+    <string name="ok">Ok</string>
+    <string name="permission_denied">Permesso negato, impossibile utilizzare l\'app.</string>
+    <string name="title_location_permission">Permessi</string>
+    <string name="not">Permesso negato</string>
+</resources>
