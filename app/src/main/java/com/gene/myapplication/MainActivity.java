@@ -13,6 +13,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+/**
+* @author Generico Garofano
+*/
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
