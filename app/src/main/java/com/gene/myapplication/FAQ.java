@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+*@author Generico Garofano
+ */
+
 public class FAQ extends AppCompatActivity {
     private MediaPlayer player;
     private ImageButton play, pause;
