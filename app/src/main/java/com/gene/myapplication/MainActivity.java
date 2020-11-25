@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 /**
 * @author Generico Garofano
+* @description This activity provide a splash screen for the app.
 */
 
 public class MainActivity extends AppCompatActivity {
