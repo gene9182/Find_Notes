@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 /**
 * @author Generico Garofano
+ * date 21-12-2020
 * @description This activity provide a splash screen for the app.
 */
 
