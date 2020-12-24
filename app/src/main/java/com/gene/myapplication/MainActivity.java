@@ -19,7 +19,6 @@ import java.util.TimerTask;
 */
 
 
-//aggiungere commenti
 public class MainActivity extends AppCompatActivity {
 
     @Override
