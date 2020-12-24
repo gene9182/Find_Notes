@@ -18,6 +18,8 @@ import java.util.TimerTask;
 * @description This activity provide a splash screen for the app.
 */
 
+
+//aggiungere commenti
 public class MainActivity extends AppCompatActivity {
 
     @Override
