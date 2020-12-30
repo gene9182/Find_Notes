@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
 *@author Generico Garofano
-*@version FindNotes.0.0.1
+*@version FindNotes.1.0.0
 *@description this activity provide the FAQ page where the user can find some questions
 */
 
