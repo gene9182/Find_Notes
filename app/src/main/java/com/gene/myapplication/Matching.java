@@ -41,6 +41,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * @author Generico Garofano
+ * @version FindNotes.0.0.1
+ * @description this activity provide all methods for matching the source image with template image
+ */
+
 public class Matching extends AppCompatActivity {
 
     private static final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -58,13 +64,17 @@ public class Matching extends AppCompatActivity {
     private Bitmap bmp = null;
 
 
+    /**
+     * @return void
+     * @params Bundle
+     */
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
 
-        //Tiene lo schermo acceso
+        //Keep Screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         progress=findViewById(R.id.progressBar);
@@ -82,12 +92,11 @@ public class Matching extends AppCompatActivity {
         }
 
         bitmapTemplate=BitmapFactory.decodeFile(picPath);
-        //imageView.setRotation(90);
 
         scarica.setClickable(false);
         Log.i("Gene", "Bottone cliccabile: "+scarica.isClickable());
 
-        //Bottone invisibile
+        //Button not visible
         scarica.setVisibility(4);
         scarica.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,12 +155,15 @@ public class Matching extends AppCompatActivity {
 
 
 
+    /**
+     * @return void
+     * @params Mat (OpenCV MAT)
+     */
     @SuppressLint("WrongConstant")
     public void multiMatching(Mat img){
 
         try {
-
-
+            //In this Try block we have all template images 
             Mat tplBiscroma = Utils.loadResource(Matching.this, R.drawable.biscroma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
             search(tplBiscroma, "Biscroma",img);
 
@@ -268,15 +280,10 @@ public class Matching extends AppCompatActivity {
 
                 imageView.setImageBitmap(bmp);
                 scarica.setClickable(true);
-                //Invisibile=4
-                //Visibile=0
 
-                //Bottone visibile
+                //Button visible
                 scarica.setVisibility(0);
                 Log.i("Gene","Visibilità: "+scarica.getVisibility());
-
-
-
 
                 Toast.makeText(Matching.this,R.string.fatto, Toast.LENGTH_LONG).show();
 
@@ -290,7 +297,7 @@ public class Matching extends AppCompatActivity {
     }
 
 
-    //Generatore dinamico di stringhe
+    //Dynamic String generator
     public String generateFilename(int k){
         StringBuilder builder=new StringBuilder();
         while(k-- !=0){
@@ -302,9 +309,8 @@ public class Matching extends AppCompatActivity {
     }
 
 
-    //Salva immagine elaborata in galleria
+    //Save the result image into gallery
     public void saveImg() throws FileNotFoundException {
-        //Salvataggio immagine
         String filename= generateFilename(5)+".png";
         File sd= Environment.getExternalStorageDirectory();
         File dest=new File(sd,filename);
@@ -329,8 +335,6 @@ public class Matching extends AppCompatActivity {
         Imgproc.matchTemplate(img, tpl, result, Imgproc.TM_CCOEFF_NORMED);
         Imgproc.threshold(result, result, 0.1, 1, Imgproc.THRESH_TOZERO);
 
-
-
         Core.MinMaxLocResult maxr = Core.minMaxLoc(result);
         Point maxp = maxr.maxLoc;
         maxval = maxr.maxVal;
@@ -339,9 +343,6 @@ public class Matching extends AppCompatActivity {
         dst = img.clone();
 
         if (maxval >= threshold) {
-
-
-
 
             Imgproc.rectangle(img, maxp, new Point(maxop.x + tpl.cols(),
                     maxop.y + tpl.rows()), new Scalar(0, 255, 0),2,4,0);
@@ -467,7 +468,7 @@ public class Matching extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // vediamo se il permission_granted corrisponde al fine location
+                    // check if permission_granted is equals to fine location
                     if (ContextCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED) {
