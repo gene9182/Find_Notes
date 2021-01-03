@@ -27,6 +27,13 @@ import androidx.core.content.ContextCompat;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author Generico Garofano
+ * @description This activity provide a choose option for the user.
+ * The user can choose the source of the image (camera or browse into gallery).
+ * @version FindNotes.0.0.1
+ */
+
 
 public class ChooseActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 0;
@@ -39,10 +46,10 @@ public class ChooseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose);
 
 
-        //Tiene lo schermo acceso
+        //Keep screen On
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        //Anche se da errore, mette correttamente l'activity in verticale.
+        //Force the vertical orientation for this activity
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         checkPermission();
@@ -50,7 +57,7 @@ public class ChooseActivity extends AppCompatActivity {
         myButton = findViewById(R.id.myButton);
         myButton2 = findViewById(R.id.myButton3);
 
-        //Immagine da camera
+        //Get image from Phone Camera
         myButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +68,7 @@ public class ChooseActivity extends AppCompatActivity {
         });
 
 
-        //Immagine da galleria
+        //Get image from Gallery
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +83,9 @@ public class ChooseActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @return void
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -106,6 +116,10 @@ public class ChooseActivity extends AppCompatActivity {
 
     String mCurrentPhotoPath;
 
+    /**
+     * @return File
+     * @description this method create a path for image
+     */
     private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();
         File image = File.createTempFile(
@@ -117,6 +131,10 @@ public class ChooseActivity extends AppCompatActivity {
         return image;
     }
 
+    /**
+     * @return void
+     * @description this method launch intent for take image from Camera or Gallery
+     */
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -133,6 +151,10 @@ public class ChooseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * @return void
+     * @description this method save image into gallery
+     */
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
@@ -149,6 +171,9 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * @return boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -156,6 +181,9 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -185,9 +213,13 @@ public class ChooseActivity extends AppCompatActivity {
 
     private boolean isPermissionGranted = false;
 
+    /**
+     * @return boolean
+     * @description with this method we can check if user have granted us permission
+     */
     public boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
+                Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
@@ -204,7 +236,7 @@ public class ChooseActivity extends AppCompatActivity {
                                 //Prompt the user once explanation has been shown
                                 ActivityCompat.requestPermissions(ChooseActivity.this,
                                         new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                         MY_PERMISSIONS_REQUEST);
                             }
                         })
@@ -227,6 +259,10 @@ public class ChooseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * @return void
+     * @description with this method we can check the results of request permission
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -239,7 +275,7 @@ public class ChooseActivity extends AppCompatActivity {
 
                     // vediamo se il permission_granted corrisponde al fine location
                     if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            Manifest.permission.READ_EXTERNAL_STORAGE)
                             == PackageManager.PERMISSION_GRANTED) {
                         isPermissionGranted = true;
 
@@ -247,6 +283,7 @@ public class ChooseActivity extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(ChooseActivity.this,R.string.not, Toast.LENGTH_SHORT).show();
+                    Log.i("Gene", "Permesso negato");
                     // permission denied. Disable the
                     // functionality that depends on this permission.
                     isPermissionGranted = false;
