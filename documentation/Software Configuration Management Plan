@@ -1,0 +1,174 @@
+	
+TABLE OF CONTENTS
+
+1	Identification	2
+1.1	Document overview	2
+1.2	References	2
+1.2.1	Project References	2
+2	Organization	2
+2.1	Activities and responsibilities	2
+2.1.1	Decisions process and responsibilities	3
+3	Configuration identification	3
+3.1	Identification rules	3
+3.1.1	Version number of a configuration item	3
+3.2	Configuration Baseline Management	3
+4	Configuration control	4
+4.1	Change Management	4
+4.2	Configuration Status Accounting	4
+4.2.1	Evolutions traceability	4
+4.2.2	Setting up Configuration status	4
+4.3	Reviews	5
+4.3.1	Setting up baseline	5
+4.3.2	Setting up branch systems	5
+4.4	Configuration management plan maintenance	5
+5	Tools	5
+
+
+ 
+1	Identification
+This document amplifies the Software Configuration management of the Project Management Plan.
+1.1	Document overview
+This document contains the software configuration management plan for the software Find Notes!.
+
+1.2	References
+
+1.2.1	Project References
+
+#	Document Identifier	Document Title
+[R1]	OpenCV	Home - OpenCV
+
+
+2	Organization
+The software configuration is managed by the members of the project, with specific tools. Responsibilities are shared between
+•	The software configuration manager (SCM): Garofano Generico
+•	Developer (D): Apollonia Sara, Garofano Generico, Malgieri Nicola
+•	Change control board member (CCBM): Apollonia Sara
+•	Auditor (A): Malgieri Nicola
+2.1	Activities and responsibilities
+
+Activities when setting up the project	Person responsible
+Identify the configuration items	SCM
+Install the bug repository tool 	SCM
+Install the software configuration repository tool 	SCM
+
+Activities during the project lifecycle	Person responsible
+Export components for modification, test or delivery	SCM, D
+Create version, write version delivery document	D
+Approve reference configurations	CCBM
+Verify version to be delivered and authorize deliveries	CCBM, D
+
+
+Management activities	Person responsible
+Manage versions and archives	SCM, D
+Produce reports and statistics	SCM
+
+
+
+
+
+
+2.1.1	Decisions process and responsibilities
+Responsibilities during reviews, audits and approvals are listed below:
+
+At the end of an activity of the project
+Activities	Person Responsible
+Do a configuration freeze	SCM
+
+During a configuration management process audit:
+Activities	Person Responsible
+Do the configuration management process audit	A
+
+
+3	Configuration identification
+3.1	Identification rules
+3.1.1	Version number of a configuration item
+The attribution of a version number is a prerequisite to any delivery of any configuration item. This number shall be incremented before a new delivery, if the product or its documentation were modified.
+The definition rules of a version number are the following:
+ 
+<Name of configuration item>.<major><minor>.<revision>
+
+For example:
+FindNotes.0.0.1 -> Alpha test release
+FindNotes.1.0.0 -> First major release
+FineNotes.1.2.1 -> Second minor release + bugfixes
+FineNOtes.2.0.3 -> Second major release + bugfixes
+
+When:
+•	Major: it’s a non-negative integer, it change when we making a big update in the software.
+•	Minor: it’s a non-negative integer, it change when we adding a new feature in the software.
+•	Revision: it’s a non-negative integer, it change when we making a bugfix update in the software.
+
+
+
+3.2	Configuration Baseline Management
+•	product baseline (PBL), which consists of completed and accepted system components and documentation that identifies these products. 
+•	The PBL is the master branch of the repository https://github.com/gene9182/Find_Notes
+
+
+4	Configuration control
+4.1	Change Management
+Describe the process for controlling changes to the baselines and for tracking the implementation of those changes.
+
+•	Changes requests are emitted from by the CCBM according to the problem resolution process,
+•	When a change request is accepted by the CCBM, a branch is created.
+
+
+4.2	Configuration Status Accounting
+Configuration Status Accounting (CSA) is the process to record, store, maintain and report the status of configuration items during the software lifecycle. 
+4.2.1	Evolutions traceability
+The traceability of modifications of items given their types:
+•	Document: The modification sheet number identifies the origin of the modification. The modified paragraphs in the document are identified, if possible, by revision marks.
+•	Source file: The software configuration management tool records, for each source file or group of source files, a comment where the modification is described.
+•	Configuration item: The Version Delivery Description of the article identifies the modification sheet included in the current version.
+The configuration items are all the files inside the repository https://github.com/gene9182/Find_Notes
+
+4.2.2	Setting up Configuration status
+The SCM sets up the state of all versions and of each configuration article with:
+•	The label,
+•	The version number.
+
+1.	V0.0.1 Alpha release: this is the version of software provided by the SCM in the repository.
+2.	V1.0.0 Major  release: this is the version of software provided by the team after have completed the sprint number 1.1 and 1.2
+3.	V2.0.0 Major release (Stable version): TBC
+
+
+
+
+4.3	Reviews
+Describe how the technical reviews during the project relate to the establishment of baselines, branches and so on, and explain the role of configuration managers in these reviews.
+
+When a developer would create a new branch from the master branch because want makes new change/bugfixes to the software, after making the changes, he can committing and pushing the changes to the master branch and he has to creates a new pull request. 
+If the pull request has no merge conflicts, then the Audit reviews the content of the new pull request made from developer for the SCM, that approves or rejects it.
+4.3.1	Setting up baseline
+The Alpha release provided by the SCM is the first version of the software. We use this version for the baseline.
+
+4.3.2	Setting up branch systems
+The branch structure is composed by:
+
+-	feature/ : this mean that the team is implementing a feature
+-	bugfix/   : this mean that the team is fixing a bug. 
+
+For example, the name of the branch is: 
+•	FindNotes.1.0.x/bugfix/name_of_the_bug
+•	FindNotes.1.x.0/feature/name_of_the_new_feature
+When the ‘x’ in the version system is the non-negative number of bugfixes or added features.
+4.4	Configuration management plan maintenance
+Describe the activities and responsibilities for continued configuration management planning during the life cycle of the project. 
+Every member of the team have this responsibility.
+
+
+
+
+5	Tools
+
+All the tools used in this projects are: 
+•	GitHub
+•	Jira
+•	Visual Studio Code
+•	Jenkins
+
+We use GitHub for the hosting of the repository and for the version control system. GitHub allow as to manage better the software life cycle.
+Jira is a proprietary issue tracking product that allows bug tracking and agile project management.
+Visual Studio Code is a free source-code editor. Features include support for debugging, code refactoring and embedded Git. 
+Jenkins is a CI Tool configured with GitHub repository. This tool helps us with static analysis and build automation. 
+
