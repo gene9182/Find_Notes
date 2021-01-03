@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 /**
  * @author Generico Garofano
  * @version FindNotes.1.0.0

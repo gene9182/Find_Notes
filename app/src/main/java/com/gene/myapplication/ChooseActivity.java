@@ -35,6 +35,7 @@ import java.io.IOException;
 */
 
 
+
 public class ChooseActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 0;
     private static int RESULT_LOAD_IMAGE = 1;
@@ -219,7 +220,7 @@ public class ChooseActivity extends AppCompatActivity {
      */
     public boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
+                Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
@@ -236,7 +237,7 @@ public class ChooseActivity extends AppCompatActivity {
                                 //Prompt the user once explanation has been shown
                                 ActivityCompat.requestPermissions(ChooseActivity.this,
                                         new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                         MY_PERMISSIONS_REQUEST);
                             }
                         })
@@ -275,7 +276,7 @@ public class ChooseActivity extends AppCompatActivity {
 
                     // vediamo se il permission_granted corrisponde al fine location
                     if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            Manifest.permission.READ_EXTERNAL_STORAGE)
                             == PackageManager.PERMISSION_GRANTED) {
                         isPermissionGranted = true;
 
@@ -283,6 +284,7 @@ public class ChooseActivity extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(ChooseActivity.this,R.string.not, Toast.LENGTH_SHORT).show();
+                    Log.i("Gene", "Permesso negato");
                     // permission denied. Disable the
                     // functionality that depends on this permission.
                     isPermissionGranted = false;

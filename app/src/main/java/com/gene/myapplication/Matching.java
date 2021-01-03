@@ -78,8 +78,9 @@ public class Matching extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         progress=findViewById(R.id.progressBar);
-        checkPermission();
 
+
+        checkPermission();
         progress.setVisibility(View.INVISIBLE);
 
         imageView=findViewById(R.id.image2);
@@ -274,6 +275,9 @@ public class Matching extends AppCompatActivity {
 
 
 
+
+
+
             try {
                 bmp = Bitmap.createBitmap(dst.cols(), dst.rows(), Bitmap.Config.ARGB_8888);
                 Utils.matToBitmap(dst, bmp);
@@ -418,12 +422,12 @@ public class Matching extends AppCompatActivity {
 
     public boolean checkPermission() {
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
+                Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
 
                 new AlertDialog.Builder(this)
@@ -470,7 +474,7 @@ public class Matching extends AppCompatActivity {
 
                     // check if permission_granted is equals to fine location
                     if (ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            Manifest.permission.READ_EXTERNAL_STORAGE)
                             == PackageManager.PERMISSION_GRANTED) {
                         isPermissionGranted = true;
 
