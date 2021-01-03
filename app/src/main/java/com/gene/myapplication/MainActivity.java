@@ -13,12 +13,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-/**
- * @author Generico Garofano
- * @description This activity provide a splash screen for the app
- * @version FindNotes.0.0.1
- */
-
 //Test
 public class MainActivity extends AppCompatActivity {
 
@@ -47,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * @return void
-     * @description this methon provide an animation for a String
-     */
+
     private void runAnimation() {
         Animation a = AnimationUtils.loadAnimation(this, R.anim.scale);
         a.reset();

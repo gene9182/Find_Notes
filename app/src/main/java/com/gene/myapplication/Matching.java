@@ -79,6 +79,8 @@ public class Matching extends AppCompatActivity {
 
         progress=findViewById(R.id.progressBar);
 
+
+        checkPermission();
         progress.setVisibility(View.INVISIBLE);
 
         imageView=findViewById(R.id.image2);
@@ -95,7 +97,6 @@ public class Matching extends AppCompatActivity {
         scarica.setClickable(false);
         Log.i("Gene", "Bottone cliccabile: "+scarica.isClickable());
 
-        checkPermission();
         //Button not visible
         scarica.setVisibility(4);
         scarica.setOnClickListener(new View.OnClickListener() {
@@ -163,8 +164,6 @@ public class Matching extends AppCompatActivity {
     public void multiMatching(Mat img){
 
         try {
-            //In this Try block we have all template images
-
             Mat tplBiscroma = Utils.loadResource(Matching.this, R.drawable.biscroma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
             search(tplBiscroma, "Biscroma",img);
 

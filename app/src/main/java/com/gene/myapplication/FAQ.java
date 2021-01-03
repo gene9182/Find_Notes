@@ -10,11 +10,6 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- *@author Generico Garofano
- *@version FindNotes.0.0.1
- *@description this activity provide the FAQ page where the user can find some questions
- */
 
 public class FAQ extends AppCompatActivity {
     private MediaPlayer player;

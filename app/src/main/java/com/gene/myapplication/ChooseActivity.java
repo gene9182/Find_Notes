@@ -110,10 +110,6 @@ public class ChooseActivity extends AppCompatActivity {
 
     String mCurrentPhotoPath;
 
-    /**
-     * @return File
-     * @description this method create a path for image
-     */
     private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();
         File image = File.createTempFile(
