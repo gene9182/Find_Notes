@@ -27,6 +27,13 @@ import androidx.core.content.ContextCompat;
 import java.io.File;
 import java.io.IOException;
 
+/**
+* @author Generico Garofano
+* @description This activity provide a choose option for the user. 
+* The user can choose the source of the image (camera or browse into gallery).
+* @version FindNotes.0.0.1
+*/
+
 
 
 public class ChooseActivity extends AppCompatActivity {
@@ -110,6 +117,10 @@ public class ChooseActivity extends AppCompatActivity {
 
     String mCurrentPhotoPath;
 
+    /**
+     * @return File
+     * @description this method create a path for image 
+     */
     private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();
         File image = File.createTempFile(
@@ -121,6 +132,10 @@ public class ChooseActivity extends AppCompatActivity {
         return image;
     }
 
+    /**
+     * @return void
+     * @description this method launch intent for take image from Camera or Gallery
+     */
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {

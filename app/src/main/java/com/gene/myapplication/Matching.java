@@ -164,6 +164,7 @@ public class Matching extends AppCompatActivity {
     public void multiMatching(Mat img){
 
         try {
+            //In this Try block we have all template images 
             Mat tplBiscroma = Utils.loadResource(Matching.this, R.drawable.biscroma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
             search(tplBiscroma, "Biscroma",img);
 
