@@ -164,119 +164,24 @@ public class Matching extends AppCompatActivity {
     public void multiMatching(Mat img){
 
         try {
-            //In this Try block we have all template images 
-            Mat tplBiscroma = Utils.loadResource(Matching.this, R.drawable.biscroma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplBiscroma, "Biscroma",img);
-
-            Mat tplCroma = Utils.loadResource(Matching.this, R.drawable.croma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplCroma, "Croma",img);
-
-            Mat tplMinima = Utils.loadResource(Matching.this, R.drawable.minima, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima, "Minima",img);
-
-            Mat tplMinima_giu = Utils.loadResource(Matching.this, R.drawable.minima_giu, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima_giu, "Minima",img);
-
-            Mat tplSemi_minima_su = Utils.loadResource(Matching.this, R.drawable.semi_minima_su, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_su, "Semi Minima",img);
-
-            Mat tplSemi_minima_giu = Utils.loadResource(Matching.this, R.drawable.semi_minima_giu, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_giu, "Semi Minima",img);
-
-            Mat tplSemi_minima_doppia_giu = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_giu, "Semi Croma",img);
-
-            Mat tplSemi_minima_doppia_su = Utils.loadResource(Matching.this, R.drawable.semi_minima_doppia_su, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_su, "Semi Minima",img);
-
-            Mat tplSemi_minima_doppia_su_specchio = Utils.loadResource(Matching.this, R.drawable.semi_minima_doppia_giu_specchio, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_su_specchio, "Semi Minima",img);
-
-            Mat tplSemi_croma_doppia_su = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_su, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_su, "Semi Minima",img);
-
-            Mat tplSemi_croma_doppia_giu = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_giu, "Semi Croma",img);
-
+            //In this Try block we have all template images
             Mat tplChiave_violino = Utils.loadResource(Matching.this, R.drawable.chiave_violino, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
             search(tplChiave_violino, "Chiave Violino",img);
 
-            Mat tplChiave_violino050 = Utils.loadResource(Matching.this, R.drawable.chiave_violino050, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplChiave_violino050, "Chiave Violino",img);
+            Mat tplChiave= Utils.loadResource(Matching.this, R.drawable.chiave, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+            search(tplChiave, "Chiave",img);
 
+            Mat tplBiscroma= Utils.loadResource(Matching.this, R.drawable.biscroma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+            search(tplChiave, "Biscroma",img);
 
-            Mat tplChiave_violino_150 = Utils.loadResource(Matching.this, R.drawable.chiave_violino150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplChiave_violino_150, "Chiave Violino",img);
+            Mat tplCroma= Utils.loadResource(Matching.this, R.drawable.croma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+            search(tplChiave, "Croma",img);
 
-            Mat tplChiave_violino_200 = Utils.loadResource(Matching.this, R.drawable.chiave_violino200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplChiave_violino_200, "Chiave Violino",img);
+            Mat tplMinima= Utils.loadResource(Matching.this, R.drawable.minima, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+            search(tplChiave, "Minima",img);
 
-
-            Mat tplBiscroma150 = Utils.loadResource(Matching.this, R.drawable.biscroma150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplBiscroma150, "Biscroma",img);
-
-            Mat tplBiscroma200 = Utils.loadResource(Matching.this, R.drawable.biscroma200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplBiscroma200, "Biscroma",img);
-
-            Mat tplMinima_giu150 = Utils.loadResource(Matching.this, R.drawable.minima_giu150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima_giu150, "Minima",img);
-
-            Mat tplMinima_giu200 = Utils.loadResource(Matching.this, R.drawable.minima_giu200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima_giu200, "Minima",img);
-
-            Mat tplMinima150 = Utils.loadResource(Matching.this, R.drawable.minima150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima150, "Minima",img);
-
-            Mat tplMinima200 = Utils.loadResource(Matching.this, R.drawable.minima200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplMinima200, "Minima",img);
-
-            Mat tplSemi_minima_su150 = Utils.loadResource(Matching.this, R.drawable.semi_minima_su150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_su150, "Semi Minima",img);
-
-            Mat tplSemi_minima_su200 = Utils.loadResource(Matching.this, R.drawable.semi_minima_su200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_su200, "Semi Minima",img);
-
-            Mat tplSemi_minima_giu150 = Utils.loadResource(Matching.this, R.drawable.semi_minima_giu150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_giu150, "Semi Minima",img);
-
-            Mat tplSemi_minima_giu200 = Utils.loadResource(Matching.this, R.drawable.semi_minima_giu200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_giu200, "Semi Minima",img);
-
-            Mat tplSemi_minima_doppia_giu150 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_giu150, "Semi Croma",img);
-
-            Mat tplSemi_minima_doppia_giu200 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_giu200, "Semi Croma",img);
-
-            Mat tplSemi_minima_doppia_su150 = Utils.loadResource(Matching.this, R.drawable.semi_minima_doppia_su150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_su150, "Semi Minima",img);
-
-            Mat tplSemi_minima_doppia_su200 = Utils.loadResource(Matching.this, R.drawable.semi_minima_doppia_su200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_minima_doppia_su200, "Semi Minima",img);
-
-            Mat tplCroma150 = Utils.loadResource(Matching.this, R.drawable.croma150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplCroma150, "Croma",img);
-
-            Mat tplCroma200 = Utils.loadResource(Matching.this, R.drawable.croma200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplCroma200, "Croma",img);
-
-            Mat tplSemi_croma_doppia_su150 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_su150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_su150, "Semi Minima",img);
-
-            Mat tplSemi_croma_doppia_su200 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_su200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_su200, "Semi Minima",img);
-
-            Mat tplSemi_croma_doppia_giu150 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu150, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_giu150, "Semi Minima",img);
-
-            Mat tplSemi_croma_doppia_giu200 = Utils.loadResource(Matching.this, R.drawable.semi_croma_doppia_giu200, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-            search(tplSemi_croma_doppia_giu200, "Semi Minima",img);
-
-
-
-
-
-
+            Mat tplSemiCroma= Utils.loadResource(Matching.this, R.drawable.semi_croma, Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+            search(tplChiave, "Semi Croma",img);
 
             try {
                 bmp = Bitmap.createBitmap(dst.cols(), dst.rows(), Bitmap.Config.ARGB_8888);
@@ -337,7 +242,7 @@ public class Matching extends AppCompatActivity {
 
         //Template Matching
         Imgproc.matchTemplate(img, tpl, result, Imgproc.TM_CCOEFF_NORMED);
-        Imgproc.threshold(result, result, 0.1, 1, Imgproc.THRESH_TOZERO);
+        Imgproc.threshold(result, result, 0.10, 1, Imgproc.THRESH_TOZERO);
 
         Core.MinMaxLocResult maxr = Core.minMaxLoc(result);
         Point maxp = maxr.maxLoc;
@@ -346,31 +251,34 @@ public class Matching extends AppCompatActivity {
         Point maxop = new Point(maxp.x + tpl.width(), maxp.y + tpl.height());
         dst = img.clone();
 
-        if (maxval >= threshold) {
+            if (maxval <= threshold) {
 
-            Imgproc.rectangle(img, maxp, new Point(maxop.x + tpl.cols(),
-                    maxop.y + tpl.rows()), new Scalar(0, 255, 0),2,4,0);
-            Imgproc.putText
-                    (img,
-                            text,
-                            new Point(maxp.x,
-                                    maxp.y ),
-                            Core.FONT_HERSHEY_SCRIPT_COMPLEX,
-                            1,
-                            new Scalar(0, 255, 0),1);
+                Imgproc.rectangle(img, maxp, new Point(maxop.x + tpl.cols(),
+                        maxop.y + tpl.rows()), new Scalar(0, 255, 0),2,4,0);
+                Imgproc.putText
+                        (img,
+                                text,
+                                new Point(maxp.x,
+                                        maxp.y ),
+                                Core.FONT_HERSHEY_SCRIPT_COMPLEX,
+                                1,
+                                new Scalar(0, 255, 0),1);
 
-            Imgproc.rectangle(result, maxp, new Point(maxop.x + tpl.cols(),
-                    maxop.y + tpl.rows()), new Scalar(0, 255, 0), 2,4,0);
+                Imgproc.rectangle(result, maxp, new Point(maxop.x + tpl.cols(),
+                        maxop.y + tpl.rows()), new Scalar(0, 255, 0), 2,4,0);
 
-            count++;
+                count++;
 
-            Log.i("Gene", "Sto facendo " + count + " " + "matching");
+                Log.i("Gene", "Sto facendo " + count + " " + "matching");
 
-        }
 
+            }
 
         progress.setVisibility(View.INVISIBLE);
+
         matchButton.setClickable(true);
+
+
     }
 
     public void onResume()
