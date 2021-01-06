@@ -20,6 +20,8 @@ import org.robolectric.shadows.ShadowActivity;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * @author Sara Apollonia
+ * @version FindNotes1.0.0
  * Unit tests for FAQ.java
  */
 @RunWith(RobolectricTestRunner.class)
