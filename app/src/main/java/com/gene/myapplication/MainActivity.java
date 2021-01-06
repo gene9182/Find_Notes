@@ -7,6 +7,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
@@ -19,10 +20,11 @@ import java.util.TimerTask;
 * @version FindNotes.0.0.1
 */
 
-//Test
+@VisibleForTesting
 public class MainActivity extends AppCompatActivity {
 
     @Override
+    @VisibleForTesting
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -51,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
      * @return void
      * @description this methon provide an animation for a String 
      */
-    private void runAnimation() {
+
+    @VisibleForTesting
+    public void runAnimation() {
         Animation a = AnimationUtils.loadAnimation(this, R.anim.scale);
         a.reset();
         TextView tv = (TextView) findViewById(R.id.textView6);
