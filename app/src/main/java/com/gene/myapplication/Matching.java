@@ -251,7 +251,7 @@ public class Matching extends AppCompatActivity {
         Point maxop = new Point(maxp.x + tpl.width(), maxp.y + tpl.height());
         dst = img.clone();
 
-            if (maxval <= threshold) {
+            if (maxval >= threshold) {
 
                 Imgproc.rectangle(img, maxp, new Point(maxop.x + tpl.cols(),
                         maxop.y + tpl.rows()), new Scalar(0, 255, 0),2,4,0);
