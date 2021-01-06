@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\gene_\\Desktop\\Find-Notes\\openCVLibrary310\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\gene_\\Desktop\\Find-Notes\\openCVLibrary310\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "9",
+                        "endColumns": "24",
+                        "endOffsets": "361"
+                    }
+                }
+            ]
+        }
+    ]
+}
