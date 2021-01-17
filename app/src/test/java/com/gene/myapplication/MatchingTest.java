@@ -33,7 +33,7 @@ import static org.robolectric.Shadows.shadowOf;
 
 /**
  * Unit tests for MatchingActivity.java
- * @author Sara Apollonia, Nicola Malgieri, Generico Garofano
+ * @author SaraAP0, NMalgieri, gene9182
  */
 
 
