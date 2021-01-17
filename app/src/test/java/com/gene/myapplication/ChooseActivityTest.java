@@ -33,6 +33,7 @@ import static org.robolectric.internal.bytecode.RobolectricInternals.getClassLoa
 
 /**
  * Unit tests for ChooseActivity.java
+ * @author Sara Apollonia, Nicola Malgieri, Generico Garofano
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.O_MR1})
@@ -67,6 +68,82 @@ public class ChooseActivityTest {
     }
 
     @Test
+    public void shouldMenuHomeVisible() throws Exception {
+        Menu mu = new RoboMenu();
+        MenuItem mi = new RoboMenuItem(R.id.home);
+        ca.onOptionsItemSelected(mi);
+        ShadowActivity shadowActivity = shadowOf(ca);
+        assertTrue(!shadowActivity.isFinishing());
+    }
+
+    @Test
+    public void shouldMenuFaqVisible() throws Exception {
+        Menu mu = new RoboMenu();
+        MenuItem mi = new RoboMenuItem(R.id.faq);
+        ca.onCreateOptionsMenu(mu);
+        ca.onOptionsItemSelected(mi);
+        ShadowActivity shadowActivity = shadowOf(ca);
+        assertTrue(!shadowActivity.isFinishing());
+    }
+
+    @Test
+    public void shouldMenuCreditsVisible() throws Exception {
+        Menu mu = new RoboMenu();
+        MenuItem mi = new RoboMenuItem(R.id.credits);
+        ca.onOptionsItemSelected(mi);
+        ShadowActivity shadowActivity = shadowOf(ca);
+        assertTrue(!shadowActivity.isFinishing());
+    }
+
+    @Test
+    public void shouldMenuDefaultVisible() throws Exception {
+        Menu mu = new RoboMenu();
+        MenuItem mi = new RoboMenuItem();
+        ca.onOptionsItemSelected(mi);
+        ShadowActivity shadowActivity = shadowOf(ca);
+        assertTrue(!shadowActivity.isFinishing());
+
+    }
+/*
+    @Test
+    //Impossibile testare i permessi perché il framework Robolectrics ha un issue con gli alert dialogs.
+    //https://github.com/robolectric/robolectric/issues/3205
+    public void checkHasPermission() throws Exception{
+        shadowOf(getMainLooper()).idle();
+        AlertDialog dialog = (AlertDialog) ShadowAlertDialog.getLatestAlertDialog();
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).performClick();
+        Assert.assertNotNull(ShadowAlertDialog.getLatestAlertDialog());
+
+        ShadowAlertDialog shadowAlertDialog = (ShadowAlertDialog) Shadows.shadowOf(ShadowAlertDialog.getLatestAlertDialog());
+        Assert.assertEquals(R.string.title_location_permission, shadowAlertDialog.getTitle());
+        Assert.assertEquals(R.string.permission_explain, shadowAlertDialog.getMessage());
+
+    }
+*/
+
+
+    @Test
+    public void createImageFileTest() throws Exception {
+        shadowOf(getMainLooper()).idle();
+        FileOutputStream mockFos = mock(FileOutputStream.class);
+
+        mockFos.close();
+        verify(mockFos).close();
+
+    }
+
+    @Test
+    public void dispatchIntent() throws Exception {
+        shadowOf(getMainLooper()).idle();
+
+        btn2.performClick();
+
+        ShadowActivity shadowActivity = shadowOf(ca);
+        Intent inte = shadowActivity.getNextStartedActivity();
+        shadowActivity.receiveResult(inte, -1, shadowOf(ca).getResultIntent());
+    }
+
+    @Test
     public void onActResult() throws Exception {
         shadowOf(getMainLooper()).idle();
 
@@ -98,3 +175,4 @@ public class ChooseActivityTest {
 
 
 }
+
