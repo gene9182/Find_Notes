@@ -34,6 +34,7 @@ import static org.robolectric.internal.bytecode.RobolectricInternals.getClassLoa
 /**
  * Unit tests for ChooseActivity.java
  * @author SaraAP0, NMalgieri, gene9182
+ * @description this class provide unit test for ChooseActivity.java
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.O_MR1})
@@ -48,13 +49,7 @@ public class ChooseActivityTest {
 
     @Before
     public void setUp() throws Exception {
-/*
-        //Vedere Metodo dei permessi
-        ShadowApplication app = shadowOf(application);
-        app.denyPermissions(Manifest.permission.READ_EXTERNAL_STORAGE);
-        app.denyPermissions(Manifest.permission.CAMERA);
-        app.denyPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-*/
+
         ca = Robolectric.buildActivity(ChooseActivity.class).create().start().resume().get();
         ct = ca.getApplicationContext();
         ma = Robolectric.buildActivity(Matching.class).create().start().postResume().get();
@@ -104,22 +99,6 @@ public class ChooseActivityTest {
         assertTrue(!shadowActivity.isFinishing());
 
     }
-/*
-    @Test
-    //Impossibile testare i permessi perché il framework Robolectrics ha un issue con gli alert dialogs.
-    //https://github.com/robolectric/robolectric/issues/3205
-    public void checkHasPermission() throws Exception{
-        shadowOf(getMainLooper()).idle();
-        AlertDialog dialog = (AlertDialog) ShadowAlertDialog.getLatestAlertDialog();
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).performClick();
-        Assert.assertNotNull(ShadowAlertDialog.getLatestAlertDialog());
-
-        ShadowAlertDialog shadowAlertDialog = (ShadowAlertDialog) Shadows.shadowOf(ShadowAlertDialog.getLatestAlertDialog());
-        Assert.assertEquals(R.string.title_location_permission, shadowAlertDialog.getTitle());
-        Assert.assertEquals(R.string.permission_explain, shadowAlertDialog.getMessage());
-
-    }
-*/
 
 
     @Test
