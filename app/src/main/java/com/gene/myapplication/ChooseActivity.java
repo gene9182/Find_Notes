@@ -29,7 +29,7 @@ import java.io.IOException;
 
 /**
 * @author Generico Garofano
-* @description This activity provide a choose option for the user. 
+* @description This activity provide a choose option for the user.
 * The user can choose the source of the image (camera or browse into gallery).
 * @version FindNotes.0.0.1
 */
@@ -119,7 +119,7 @@ public class ChooseActivity extends AppCompatActivity {
 
     /**
      * @return File
-     * @description this method create a path for image 
+     * @description this method create a path for image
      */
     private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();

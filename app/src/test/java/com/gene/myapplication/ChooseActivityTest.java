@@ -57,7 +57,7 @@ public class ChooseActivityTest {
 */
         ca = Robolectric.buildActivity(ChooseActivity.class).create().start().resume().get();
         ct = ca.getApplicationContext();
-        ma = Robolectric.buildActivity(Matching.class).create().start().postResume().get();
+        ma = Robolectric.buildActivity(Matching.class).create().start().get();
         ct1 = ca.getApplicationContext();
 
 
