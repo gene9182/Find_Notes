@@ -33,7 +33,7 @@ import static org.robolectric.internal.bytecode.RobolectricInternals.getClassLoa
 
 /**
  * Unit tests for ChooseActivity.java
- * @author Sara Apollonia, Nicola Malgieri, Generico Garofano
+ * @author SaraAP0, NMalgieri, gene9182
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = {Build.VERSION_CODES.O_MR1})
@@ -57,7 +57,7 @@ public class ChooseActivityTest {
 */
         ca = Robolectric.buildActivity(ChooseActivity.class).create().start().resume().get();
         ct = ca.getApplicationContext();
-        ma = Robolectric.buildActivity(Matching.class).create().start().get();
+        ma = Robolectric.buildActivity(Matching.class).create().start().postResume().get();
         ct1 = ca.getApplicationContext();
 
 
