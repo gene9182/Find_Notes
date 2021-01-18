@@ -1,8 +1,12 @@
 package com.gene.myapplication;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -15,11 +19,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.LooperMode;
 import org.robolectric.fakes.RoboMenu;
 import org.robolectric.fakes.RoboMenuItem;
 import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowPackageManager;
 
 import java.io.FileOutputStream;
 import java.net.URL;
@@ -42,10 +48,9 @@ import static org.robolectric.internal.bytecode.RobolectricInternals.getClassLoa
 public class ChooseActivityTest {
     private ChooseActivity ca;
     private Matching ma;
-    private Context ct, ct1;
+    private Context ct, ct1, context;
     private Button btn, btn2;
     private PackageManager packageManager;
-
 
     @Before
     public void setUp() throws Exception {
@@ -114,11 +119,20 @@ public class ChooseActivityTest {
     @Test
     public void dispatchIntent() throws Exception {
         shadowOf(getMainLooper()).idle();
+        ResolveInfo resolverInfo = new ResolveInfo();
+        resolverInfo.activityInfo = new ActivityInfo();
+        resolverInfo.activityInfo.applicationInfo = new ApplicationInfo();
+        resolverInfo.activityInfo.applicationInfo.packageName =
+                ListActivity.class.getPackage().getName();
+        resolverInfo.activityInfo.name = ListActivity.class.getName();
+        ShadowPackageManager rpm = shadowOf(RuntimeEnvironment.application.getPackageManager());
+        rpm.addResolveInfoForIntent(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), resolverInfo);
 
         btn2.performClick();
 
         ShadowActivity shadowActivity = shadowOf(ca);
         Intent inte = shadowActivity.getNextStartedActivity();
+
         shadowActivity.receiveResult(inte, -1, shadowOf(ca).getResultIntent());
     }
 
@@ -130,6 +144,17 @@ public class ChooseActivityTest {
         ShadowActivity shadowActivity = shadowOf(ca);
         ShadowActivity.IntentForResult intentForResult = shadowActivity.getNextStartedActivityForResult();
         intentForResult.requestCode = 1;
+
+        ResolveInfo resolverInfo = new ResolveInfo();
+        resolverInfo.activityInfo = new ActivityInfo();
+        resolverInfo.activityInfo.applicationInfo = new ApplicationInfo();
+        resolverInfo.activityInfo.applicationInfo.packageName =
+                ListActivity.class.getPackage().getName();
+        resolverInfo.activityInfo.name = ListActivity.class.getName();
+        ShadowPackageManager rpm = shadowOf(RuntimeEnvironment.application.getPackageManager());
+        rpm.addResolveInfoForIntent(new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI), resolverInfo);
+
+
 
         Intent i = new Intent(
                 Intent.ACTION_PICK,
@@ -145,9 +170,10 @@ public class ChooseActivityTest {
         Intent inten = intentForResult.intent;
 
         shadowActivity.receiveResult(inten, -1, shadowOf(ca).getResultIntent());
+        Intent in = shadowActivity.getResultIntent();
+
 
         ca.onActivityResult(1,-1,i);
-
 
     }
 
