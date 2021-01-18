@@ -37,7 +37,6 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -106,7 +105,7 @@ public class Matching extends AppCompatActivity {
                     saveImg();
                     Log.i("Gene", "Immagine salvata");
                     Toast.makeText(Matching.this, R.string.scaricato,Toast.LENGTH_LONG ).show();
-                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
                     Toast.makeText(Matching.this, R.string.non_scaricato, Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
@@ -127,8 +126,6 @@ public class Matching extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
-
                         multiMatching(img);
                     }
                 }, 2000);
@@ -139,7 +136,7 @@ public class Matching extends AppCompatActivity {
         Log.i("Gene", "ho convertito il path in bitmap"+bitmapTemplate.toString());
     }
 
-    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+    public BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
 
@@ -219,24 +216,14 @@ public class Matching extends AppCompatActivity {
 
 
     //Save the result image into gallery
-    public void saveImg() throws FileNotFoundException {
+    public void saveImg() throws IOException {
         String filename= generateFilename(5)+".png";
         File sd= Environment.getExternalStorageDirectory();
         File dest=new File(sd,filename);
         FileOutputStream fos=new FileOutputStream(dest);
         bmp.compress(Bitmap.CompressFormat.PNG,90,fos);
-        try {
-            fos.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    }
 
     public void search(Mat tpl, String text, Mat img ) throws IOException {
 

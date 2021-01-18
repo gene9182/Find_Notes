@@ -136,7 +136,7 @@ public class ChooseActivity extends AppCompatActivity {
      * @return void
      * @description this method launch intent for take image from Camera or Gallery
      */
-    private void dispatchTakePictureIntent() {
+    public void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
