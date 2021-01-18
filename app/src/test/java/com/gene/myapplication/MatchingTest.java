@@ -12,8 +12,9 @@ import android.widget.Button;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.core.Scalar;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -21,7 +22,6 @@ import org.robolectric.annotation.LooperMode;
 import org.robolectric.fakes.RoboMenu;
 import org.robolectric.fakes.RoboMenuItem;
 import org.robolectric.shadows.ShadowActivity;
-import org.robolectric.shadows.ShadowIntent;
 
 import java.io.FileOutputStream;
 
@@ -47,16 +47,27 @@ public class MatchingTest {
     private Mat img = null;
     private ChooseActivity chooseActivity;
     private Context ct;
+    private Bundle extras;
+
+    protected Mat gray0_64f;
+
+
+    protected static final int matSize = 10;
+
+    private static final String TAG = "OpenCVTestCase";
+
+    protected Mat dst;
+
 
 
     @Before
-    public void setUp () throws Exception{
+    public void setUp () throws Exception {
         shadowOf(getMainLooper()).idle();
-         matching = Robolectric.buildActivity(Matching.class).create().start().resume().get();
-         chooseActivity = Robolectric.buildActivity(ChooseActivity.class).create().start().resume().postResume().get();
-         ct = matching.getApplicationContext();
-         matchButton = matching.findViewById(R.id.myButton2);
-         scarica = matching.findViewById(R.id.myButton3);
+        matching = Robolectric.buildActivity(Matching.class).create().start().resume().get();
+        chooseActivity = Robolectric.buildActivity(ChooseActivity.class).create().start().resume().postResume().get();
+        ct = matching.getApplicationContext();
+        matchButton = matching.findViewById(R.id.myButton2);
+        scarica = matching.findViewById(R.id.myButton3);
     }
 
     @Test
@@ -102,19 +113,13 @@ public class MatchingTest {
         shadowOf(getMainLooper()).idle();
         matchButton.performClick();
         Intent result = shadowOf(matching).getResultIntent();
+        extras = result.getExtras();
+        dst = new Mat();
+        assertTrue(dst.empty());
 
-        Intent intent= matching.getIntent();
-        ShadowIntent shadowIntent1 = shadowOf(intent);
+        gray0_64f = new Mat(matSize, matSize, CvType.CV_64F, new Scalar(0.0));
 
-        Bundle extras = intent.getExtras();
-
-        ShadowActivity shadowActivity = shadowOf(matching);
-
-
-
-        Mat img;
-        img= Imgcodecs.imread(String.valueOf(R.drawable.biscroma), Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-        matching.multiMatching(img);
+        matching.multiMatching(gray0_64f);
     }
 
 
@@ -125,15 +130,22 @@ public class MatchingTest {
         scarica.performClick();
     }
 
+
     @Test
     public void saveImgTest() throws Exception {
         shadowOf(getMainLooper()).idle();
+
+        String data = "ensure written";
+
         FileOutputStream mockFos = mock(FileOutputStream.class);
         mockFos.flush();
         mockFos.close();
+        verify(mockFos).flush();
         verify(mockFos).close();
 
     }
+
+
 
 
 
