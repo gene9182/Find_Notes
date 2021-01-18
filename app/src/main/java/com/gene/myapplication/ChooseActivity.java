@@ -19,7 +19,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -122,8 +121,7 @@ public class ChooseActivity extends AppCompatActivity {
      * @return File
      * @description this method create a path for image
      */
-    @VisibleForTesting
-    public File createImageFile() throws IOException {
+    private File createImageFile() throws IOException {
         File storageDir = Environment.getExternalStorageDirectory();
         File image = File.createTempFile(
                 "example",  /* prefix */
@@ -138,8 +136,7 @@ public class ChooseActivity extends AppCompatActivity {
      * @return void
      * @description this method launch intent for take image from Camera or Gallery
      */
-    @VisibleForTesting
-    public void dispatchTakePictureIntent() {
+    private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;
